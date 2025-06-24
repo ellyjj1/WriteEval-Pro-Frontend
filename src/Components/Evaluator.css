@@ -1,16 +1,4 @@
-.input-textarea {
-    width: 100%;
-    min-height: 250px;  
-    max-height: 400px;  
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    resize: vertical;  
-    overflow-y: auto; 
-}
+
 
 .ql-container {
     display: none;

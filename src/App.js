@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ChatGPTComponent from './Components/ChatGPTComponent';
+import ChatGPTComponent from './Components/Evaluator';
 import Home from "./Components/Home.js";
 import './App.css';
 
@@ -10,7 +10,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/chatgpt" element={<ChatGPTComponent />} />
+                    <Route path="/evaluate" element={<ChatGPTComponent />} />
                 </Routes>
             </div>
         </Router>
