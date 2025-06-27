@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './Evaluator.css';
-import {BaseUrl} from "../consistents";
-import Navbar from './Navbar';
-import BannerBackground from "../Assets/home-banner-background.png";
+import {BaseUrl} from "../../consistents";
+import Navbar from '../../Components/Navbar';
+import BannerBackground from "../../Assets/home-banner-background.png";
 import TextareaAutosize from 'react-textarea-autosize';
 
 
@@ -13,6 +13,15 @@ const Evaluator = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [topic, setTopic] = useState("");
     const [essay, setEssay] = useState("");
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = "/login";
+        } else {
+            axios.defaults.headers.common['Authorization'] = `Token ${token}`;
+        }
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +46,6 @@ const Evaluator = () => {
             <div className="home-bannerImage-container">
                 <img src={BannerBackground} alt="Banner"/>
             </div>
-            <Navbar/>
             <p className="font-sans text-xl">Let's Evaluate Your Writing:</p>
 
             <form onSubmit={handleSubmit} className="space-y-4 mt-2">

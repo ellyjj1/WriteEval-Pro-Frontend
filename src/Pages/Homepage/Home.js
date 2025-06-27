@@ -1,23 +1,17 @@
 import React from 'react'
-import Navbar from './Navbar'
-import BannerBackground from "../Assets/home-banner-background.png";
-import BannerImage from "../Assets/home-banner-image.png";
+import Navbar from '../../Components/Navbar'
+import BannerBackground from "../../Assets/home-banner-background.png";
+import BannerImage from "../../Assets/home-banner-image.png";
+import Ad from './Ad';
+import Hero from "./Hero";
 import { FiArrowRight } from "react-icons/fi";
-import { useNavigate } from 'react-router-dom';
 
 
 
 function Home() {
 
-    const navigate = useNavigate();  
-
-    const handleClick = () => {
-        navigate('/chatgpt');  
-    };
-
     return (
         <div className='home-container'>
-            <Navbar />
             <div className='home-banner-container'>
                 <div className='home-bannerImage-container'>
                     <img src={BannerBackground} alt="" />
@@ -29,14 +23,19 @@ function Home() {
                     <p className='primary-text'>
                         Achieve your dream IELTS Writing and unlock a world of opportunities, taking you wherever your heart desires!
                     </p>
-                    <button className='secondary-button' onClick={handleClick}>
-                        Evaluate your IELTS Writing <FiArrowRight />{""}
-                    </button>
+                    <a href="/evaluate">
+                        <button className='secondary-button' >
+                            Evaluate your IELTS Writing <FiArrowRight/>{""}
+                        </button>
+                    </a>
+
                 </div>
                 <div className='home-image-section'>
-                    <img src={BannerImage} alt='' />
+                    <img src={BannerImage} alt=''/>
                 </div>
             </div>
+            <Ad />
+            {/*<Hero />*/}
         </div>
     )
 }
