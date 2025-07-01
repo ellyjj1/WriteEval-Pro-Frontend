@@ -24,8 +24,8 @@ function Home() {
                         Achieve your dream IELTS Writing and unlock a world of opportunities, taking you wherever your heart desires!
                     </p>
                     <a href="/evaluate">
-                        <button className='secondary-button' >
-                            Evaluate your IELTS Writing <FiArrowRight/>{""}
+                        <button className='px-6 py-3 rounded-2xl' >
+                            Evaluate your IELTS Writing
                         </button>
                     </a>
 
@@ -35,7 +35,7 @@ function Home() {
                 </div>
             </div>
             <Ad />
-            {/*<Hero />*/}
+            <Hero />
         </div>
     )
 }

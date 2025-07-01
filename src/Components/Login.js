@@ -35,7 +35,7 @@ function Login(props) {
                 const token = response.data.token;
                 localStorage.setItem("token", token);
                 localStorage.setItem("username", username);
-                window.location.href = "/";
+                window.location.href = "/evaluate";
             })
             .catch((error) => {
                 console.log(error);
@@ -44,7 +44,7 @@ function Login(props) {
     }
 
     return (
-        <div className="py-10  sm:py-16 lg:py-24">
+        <div className="py-8  sm:py-10 lg:py-12">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="max-w-2xl mx-auto text-center">
                     <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Welcome

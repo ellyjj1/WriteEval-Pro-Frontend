@@ -35,15 +35,14 @@ textarea {
 }
 
 button {
-  padding: 10px;
-  background-color: #4CAF50;
+  background-color: #4e0317;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: rgb(115, 3, 27);
 }
 
 .result {
@@ -83,7 +82,7 @@ body {
 }
 
 body {
-  background-color: #FEECE2;
+  background-color: #FFEFE6;
 }
 
 nav {
@@ -158,12 +157,16 @@ nav {
   color: #878787;
   margin: 1.5rem 0rem;
 }
+
+.secondary-color {
+  color: #4e0317;
+}
+
 .secondary-button {
-  padding: 1rem 2.5rem;
-  background-color: #4e0317;
+  background-color: rgba(145, 145, 145, 0.43);
   outline: none;
   border: none;
-  border-radius: 5rem;
+  border-radius: 1rem;
   font-size: 1rem;
   cursor: pointer;
   font-weight: 600;
@@ -178,7 +181,7 @@ nav {
   font-size: 1.5rem;
 }
 .secondary-button:hover {
-  background-color: #4e0317;
+  background-color: rgba(145, 145, 145, 0.15);
 }
 .about-section-container {
   margin-top: 20rem;

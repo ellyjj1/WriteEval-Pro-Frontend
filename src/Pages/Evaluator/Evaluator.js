@@ -13,6 +13,7 @@ const Evaluator = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [topic, setTopic] = useState("");
     const [essay, setEssay] = useState("");
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -27,11 +28,17 @@ const Evaluator = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        const payload = JSON.stringify({essay: topic + "\n" + essay});
+        const payload = JSON.stringify({
+            topic: topic,
+            essay: essay
+        });
 
         try {
-            const response = await axios.post(BaseUrl + "assistant/", payload, {
-                headers: {'Content-Type': 'application/json'},
+            const response = await axios.post(BaseUrl + "essays", payload, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Token " + token
+                },
             });
             setResult(response.data);
         } catch (error) {
