@@ -33,8 +33,11 @@ function Login(props) {
             .then((response) => {
                 console.log(JSON.stringify(response.data));
                 const token = response.data.token;
+                const userID = response.data.id;
+
                 localStorage.setItem("token", token);
                 localStorage.setItem("username", username);
+                localStorage.setItem("userID", userID);
                 window.location.href = "/evaluate";
             })
             .catch((error) => {

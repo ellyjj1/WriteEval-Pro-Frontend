@@ -88,9 +88,11 @@ const Navbar = () => {
                 ))}
                 {isAuth && (
                     <div className="flex items-center space-x-5">
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-1">
                             <PersonIcon className="text-[#4e0317]"/>
-                            <span>{username}</span>
+                            <a href="/userprofile">
+                                <span>{username}</span>
+                            </a>
                         </div>
                         <button
                             onClick={handleLogout}
@@ -127,12 +129,15 @@ const Navbar = () => {
                         ))}
                         {isAuth && (
                             <>
+
                                 <ListItem>
                                     <ListItemIcon>
                                         <PersonIcon className="text-gray-700"/>
                                     </ListItemIcon>
                                     <ListItemText primary={username}/>
                                 </ListItem>
+
+
                                 <ListItem button onClick={handleLogout}>
                                     <ListItemIcon>
                                         <LogoutIcon className="text-red-600"/>

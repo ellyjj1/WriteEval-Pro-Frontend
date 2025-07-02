@@ -9,26 +9,29 @@ import UserProfile from "./Pages/UserProfile/Index";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import './App.css';
+import EssayDetailPage from "./Pages/UserProfile/EssayDetailPage";
 
 
 function App() {
     return (
-            <Router>
-                <div className="App">
-                    <Navbar/>
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        <Route path="/register" element={<Register/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/contactus" element={<ContactUs/>}/>
+        <Router>
+            <div className="App">
+                <Navbar/>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/contactus" element={<ContactUs/>}/>
 
-                        <Route path="/evaluate" element={<ChatGPTComponent/>}/>
-                        <Route path="/userprofile" element={<UserProfile/>}/>
+                    <Route path="/evaluate" element={<ChatGPTComponent/>}/>
+                    <Route path="/userprofile" element={<UserProfile/>}/>
+                    <Route path="/essays/:id" element={<EssayDetailPage/>}/>
 
-                    </Routes>
-                    <Footer/>
-                </div>
-            </Router>
+
+                </Routes>
+                <Footer/>
+            </div>
+        </Router>
     );
 }
 

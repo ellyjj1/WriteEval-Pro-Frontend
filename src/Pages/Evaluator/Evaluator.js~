@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './Evaluator.css';
 import {BaseUrl} from "../../consistents";
+import Navbar from '../../Components/Navbar';
 import BannerBackground from "../../Assets/home-banner-background.png";
 import TextareaAutosize from 'react-textarea-autosize';
 

@@ -13,7 +13,9 @@ import {
 } from "@heroicons/react/24/outline";
 
 const SideBar = ({onSelect}) => {
-    const [activeKey, setActiveKey] = useState("dashboard");
+    const [activeKey, setActiveKey] = useState("essayshistory");
+    const username = localStorage.getItem("username") || "/";
+
 
     const handleClick = (key) => {
         setActiveKey(key);
@@ -34,9 +36,10 @@ const SideBar = ({onSelect}) => {
 
     return (
         <ul className="space-y-2 text-xs md:text-sm text-gray-700">
+
             <li className={getItemClass("account")} onClick={() => handleClick("account")}>
                 <UserGroupIcon className="h-5 w-5"/>
-                Account
+                {username}
             </li>
             <li className={getItemClass("dashboard")} onClick={() => handleClick("dashboard")}>
                 <RectangleGroupIcon className="h-5 w-5"/>
@@ -60,27 +63,25 @@ const SideBar = ({onSelect}) => {
 };
 
 
-
 const UserProfile = () => {
     const token = localStorage.getItem("token");
-    const username = localStorage.getItem("username");
-    const [activePanel, setActivePanel] = useState("dashboard");
+    const [activePanel, setActivePanel] = useState("essayshistory");
 
     useEffect(() => {
         if (!token) {
             window.location.href = "/login";
         }
-    }, []);
+    }, [token]);
 
 
     return (
         <div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1 md:gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1 md:gap-2 lg:gap-4">
                 <div
-                    className="col-span-1 md:col-span-1 lg:col-span-1 min-h-screen bg-white p-2 md:px-4 md:py-4 shadow-md">
+                    className="col-span-1 md:col-span-1 lg:col-span-1 min-h-screen bg-white p-2 md:px-4 md:py-4 rounded-xl shadow-md">
                     <SideBar onSelect={setActivePanel}/>
                 </div>
-                <div className="col-span-1 md:col-span-2 lg:col-span-4 border min-h-screen">
+                <div className="col-span-1 md:col-span-2 lg:col-span-4  min-h-screen">
                     {activePanel === "account" && <Account/>}
                     {activePanel === "dashboard" && <Dashboard/>}
                     {activePanel === "essayshistory" && <EssaysHistory/>}

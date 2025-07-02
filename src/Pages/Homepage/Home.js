@@ -1,10 +1,8 @@
 import React from 'react'
-import Navbar from '../../Components/Navbar'
 import BannerBackground from "../../Assets/home-banner-background.png";
 import BannerImage from "../../Assets/home-banner-image.png";
 import Ad from './Ad';
 import Hero from "./Hero";
-import { FiArrowRight } from "react-icons/fi";
 
 
 
