@@ -64,6 +64,7 @@ const Navbar = () => {
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
+        localStorage.removeItem("userID");
         setIsAuth(false);
         navigate("/");
     };

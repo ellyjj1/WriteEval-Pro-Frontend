@@ -33,6 +33,7 @@ function Register(props) {
                 // console.log("Registration success:" + JSON.stringify(response.data));
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("username", username);
+                localStorage.setItem("userID", response.data.id);
                 window.location.href = "/";
 
                 // Reset fields after registration
