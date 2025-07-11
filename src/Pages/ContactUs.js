@@ -1,13 +1,55 @@
-import React from 'react';
+import React, {useState} from 'react';
+import emailjs from '@emailjs/browser';
 
 function ContactUs(props) {
+
+    const [clientName, setClientName] = useState("")
+    const [clientEmail, setClientEmail] = useState("")
+    const [clientPhone, setClientPhone] = useState("")
+    const [clientCompany, setClientCompany] = useState("")
+    const [clientMessage, setClientMessage] = useState("")
+    const [statueMsg, setStatueMsg] = useState("")
+
+    const handleContactSubmit = (e) => {
+        e.preventDefault();
+        if (!clientName || !clientMessage) {
+            setStatueMsg("Please fill in the Name and Message fields.");
+            return;
+        }
+
+        const templateParams = {
+            clientname: clientName,
+            clientemail: clientEmail,
+            clientphone: clientPhone,
+            clientcompany: clientCompany,
+            clientmessage: clientMessage
+        };
+
+        emailjs.send('service_gbb83sg', 'template_k9gqqyf', templateParams, 'yFqsdfAXjX1-UD2ly')
+            .then((response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    setStatueMsg("Message sent successfully!");
+                    setClientName("");
+                    setClientEmail("");
+                    setClientPhone("");
+                    setClientCompany("");
+                    setClientMessage("");
+                }, (error) => {
+                    console.error('FAILED...', error);
+                    setStatueMsg("Failed to send message. Please try again later.");
+                }
+            );
+    }
+
+
     return (
         <div className="py-10 sm:py-16 lg:py-24">
             <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
                 <div className="max-w-2xl mx-auto text-center">
                     <h2 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">Contact
                         us</h2>
-                    <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-500">Any questions? plese feel free to contact us</p>
+                    <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-500">Any questions? plese
+                        feel free to contact us</p>
                 </div>
 
                 <div className="max-w-5xl mx-auto mt-12 sm:mt-16">
@@ -50,7 +92,8 @@ function ContactUs(props) {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
                                           d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 </svg>
-                                <p className="mt-6 text-lg font-medium leading-relaxed text-gray-900">28a Linwood Avenue, Mt Albert,Auckland, New Zealand</p>
+                                <p className="mt-6 text-lg font-medium leading-relaxed text-gray-900">28a Linwood
+                                    Avenue, Mt Albert, Auckland, New Zealand</p>
                             </div>
                         </div>
                     </div>
@@ -59,14 +102,18 @@ function ContactUs(props) {
                         <div className="px-6 py-12 sm:p-12">
                             <h3 className="text-3xl font-semibold text-center text-gray-900">Send us a message</h3>
 
-                            <form action="#" method="POST" className="mt-14">
+                            <form action="#" method="POST" className="mt-14" onSubmit={handleContactSubmit}>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
                                     <div>
                                         <label htmlFor="" className="text-base font-medium text-gray-900"> Your
-                                            name </label>
+                                            name * </label>
                                         <div className="mt-2.5 relative">
-                                            <input type="text" name="" id="" placeholder="Enter your full name"
-                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"/>
+                                            <input type="text" name="client_name" id=""
+                                                   placeholder="Enter your full name"
+                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-rose-800 caret-rose-800"
+                                                   value={clientName}
+                                                   onChange={(e) => setClientName(e.target.value)}
+                                            />
                                         </div>
                                     </div>
 
@@ -74,8 +121,12 @@ function ContactUs(props) {
                                         <label htmlFor="" className="text-base font-medium text-gray-900"> Email
                                             address </label>
                                         <div className="mt-2.5 relative">
-                                            <input type="email" name="" id="" placeholder="Enter your full name"
-                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"/>
+                                            <input type="email" name="client_email" id=""
+                                                   placeholder="Enter your full name"
+                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-rose-800 caret-rose-800"
+                                                   value={clientEmail}
+                                                   onChange={(e) => setClientEmail(e.target.value)}
+                                            />
                                         </div>
                                     </div>
 
@@ -83,8 +134,12 @@ function ContactUs(props) {
                                         <label htmlFor="" className="text-base font-medium text-gray-900"> Phone
                                             number </label>
                                         <div className="mt-2.5 relative">
-                                            <input type="tel" name="" id="" placeholder="Enter your full name"
-                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"/>
+                                            <input type="tel" name="client_phone" id=""
+                                                   placeholder="Enter your full name"
+                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-rose-800 caret-rose-800"
+                                                   value={clientPhone}
+                                                   onChange={(e) => setClientPhone(e.target.value)}
+                                            />
                                         </div>
                                     </div>
 
@@ -92,27 +147,38 @@ function ContactUs(props) {
                                         <label htmlFor="" className="text-base font-medium text-gray-900"> Company
                                             name </label>
                                         <div className="mt-2.5 relative">
-                                            <input type="text" name="" id="" placeholder="Enter your full name"
-                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"/>
+                                            <input type="text" name="client_company" id=""
+                                                   placeholder="Enter your full name"
+                                                   className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-rose-800 caret-rose-800"
+                                                   value={clientCompany}
+                                                   onChange={(e) => setClientCompany(e.target.value)}
+                                            />
                                         </div>
                                     </div>
 
                                     <div className="sm:col-span-2">
                                         <label htmlFor=""
-                                               className="text-base font-medium text-gray-900"> Message </label>
+                                               className="text-base font-medium text-gray-900"> Message *</label>
                                         <div className="mt-2.5 relative">
-                                            <textarea name="" id="" placeholder=""
-                                                      className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md resize-y focus:outline-none focus:border-blue-600 caret-blue-600"
-                                                      rows="4"></textarea>
+                                            <textarea name="client_message" id="" placeholder=""
+                                                      className="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md resize-y focus:outline-none focus:border-rose-800 caret-rose-800"
+                                                      value={clientMessage}
+                                                      onChange={(e) => setClientMessage(e.target.value)}
+                                                      rows="4">
+
+                                            </textarea>
                                         </div>
                                     </div>
 
                                     <div className="sm:col-span-2">
                                         <button type="submit"
-                                                className="inline-flex items-center justify-center w-full px-4 py-4 mt-2 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700">
+                                                className="inline-flex items-center justify-center w-full px-4 py-4 mt-2 text-base font-semibold text-white transition-all duration-200 bg-[#4e0317] hover:bg-rose-800 border border-transparent rounded-md focus:outline-none  focus:bg-rose-800">
                                             Send
                                         </button>
                                     </div>
+                                    {statueMsg && (
+                                        <p className="sm:col-span-2 text-center mt-4 text-sm text-rose-600"> {statueMsg}</p>
+                                    )}
                                 </div>
                             </form>
                         </div>
