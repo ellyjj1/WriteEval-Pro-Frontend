@@ -33,10 +33,10 @@ const SideBar = ({ activeKey, onSelect }) => {
                 <UserGroupIcon className="h-5 w-5"/>
                 {username}
             </li>
-            <li className={getItemClass("dashboard")} onClick={() => onSelect("dashboard")}>
-                <RectangleGroupIcon className="h-5 w-5"/>
-                Dashboard
-            </li>
+            {/*<li className={getItemClass("dashboard")} onClick={() => onSelect("dashboard")}>*/}
+            {/*    <RectangleGroupIcon className="h-5 w-5"/>*/}
+            {/*    Dashboard*/}
+            {/*</li>*/}
             <li className={getItemClass("essayshistory")} onClick={() => onSelect("essayshistory")}>
                 <Square2StackIcon className="h-5 w-5"/>
                 Essays
