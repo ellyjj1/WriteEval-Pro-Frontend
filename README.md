@@ -1,27 +1,25 @@
-# Magic 7+ IELTS Writing Evaluator
+# WriteEval Pro Writing Evaluator
 
 ## 1. Introduction
 
-Magic 7+ is an AI-powered tool designed to help IELTS candidates improve their writing skills. It evaluates your essays based on four key aspects: Task Achievement and Response, Coherence and Cohesion, Lexical Resources, and Grammatical Range and Accuracy. By using this tool, you can receive detailed feedback and a score that mimics the evaluation standards of IELTS examiners.
-
-Front-end: https://github.com/ellyjj1/ielts-evaluator-frontend
-
-Back-end: https://github.com/ellyjj1/ielts-evaluator-backend
+WriteEval Pro is an AI-powered tool designed to help IELTS candidates improve their writing skills. It evaluates your essays based on four key aspects: Task Achievement and Response, Coherence and Cohesion, Lexical Resources, and Grammatical Range and Accuracy. By using this tool, you can receive detailed feedback and a score that mimics the evaluation standards of IELTS examiners.
 
 ## 2. How to Install
 
-### Backend (Django)
-
-1. **Clone the Repository**:
+ **Clone the Repository**:
    ```sh
-   git clone https://github.com/yourusername/ielts-writing-evaluator.git
+   git clone https://github.com/ellyjj1/WriteEval-Pro-Backend.git
+   git clone https://github.com/ellyjj1/WriteEval-Pro-Frontend.git
+   ``` 
+
+   
 ## 2. How to Install
 
 ### Backend (Django)
 
 1. **Navigate to the Project Directory**:
     ```sh
-    cd ielts-writing-evaluator-backend
+    cd WriteEval-Pro-Backend
     ```
 
 2. **Create a Virtual Environment**:
@@ -99,7 +97,8 @@ The React app will start on `http://localhost:3000/` and the Django backend will
     - Open your browser and go to `http://localhost:3000/`.
 
 2. **Evaluate Your Writing**:
-    - Navigate to the writing evaluation page.
+    - Navigate to the writing evaluation page. 
+    - Register or log in to your account.
     - Paste or type your IELTS essay into the text area.
     - Click "Submit" to receive detailed feedback and scores.
 
